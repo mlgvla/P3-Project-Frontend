@@ -1,31 +1,6 @@
-.App {
-  text-align: center;
-}
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-.App-header {
-  background-color: #282C34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-.App-link {
-  color: #61DAFB;
-}
 /*Clothing Styling*/
-#clothing-hub{
-  background:#e6e6e6;
+#clothing-hub {
+  background: #e6e6e6;
   font-size: 11px;
   display: flex;
   width: 100%;
@@ -35,28 +10,31 @@
   align-content: center;
   align-items: center;
 }
-#hub-photo{
+
+#hub-photo {
   border-radius: 50px;
-background: linear-gradient(315deg, #F6F6F6, #CFCFCF);
-box-shadow:  -35px -35px 70px #B3B3B3,
-             35px 35px 70px #FFFFFF;
-width: 50%;
-height: 50%;
-display:flex;
+  background: linear-gradient(315deg, #F6F6F6, #CFCFCF);
+  box-shadow: -35px -35px 70px #B3B3B3,
+    35px 35px 70px #FFFFFF;
+  width: 50%;
+  height: 50%;
+  display: flex;
 }
-#title{
+
+#title {
   font-size: 38px;
   color: #FB2828;
-text-shadow: -1px 1px 2px #030000,
-1px -1px 2px #FF5050;}
-#clothing-information{
+  text-shadow: -1px 1px 2px #030000,
+    1px -1px 2px #FF5050;
+}
+
+#clothing-information {
   font-size: 30px;
 }
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.topnav {
+  overflow: hidden;
+  background-color: darkgrey;
+  position: sticky;
+  top: 0;
 }

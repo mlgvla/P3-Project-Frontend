@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -71,4 +71,9 @@ text-shadow: -1px 1px 2px #030000,
   to {
     transform: rotate(360deg);
   }
+} */
+
+#clothing-images {
+  width: 200px;
+  height: 200px;
 }

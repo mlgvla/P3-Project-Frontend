@@ -5,6 +5,7 @@ import NavBar from "./components/Navbar";
 
 function App() {
   const [clothing, setClothing] = useState([]);
+  // featuredClothing/set
 
   useEffect(() => {
     fetch("http://localhost:9292/clothes")

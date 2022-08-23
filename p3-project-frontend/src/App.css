@@ -16,8 +16,8 @@
   background: linear-gradient(315deg, #F6F6F6, #CFCFCF);
   box-shadow: -35px -35px 70px #B3B3B3,
     35px 35px 70px #FFFFFF;
-  width: 50%;
-  height: 50%;
+  width: 25%;
+  height: 25%;
   display: flex;
 }
 

@@ -3,7 +3,7 @@ import React from "react";
 export default ClothingCard;
 function ClothingCard({ piece, onClothingClick }) {
   return (
-    <div id="clothing-hub">
+    <div className="clothing-card" id="clothing-hub">
       <img
         id="hub-photo"
         src={piece.url}
@@ -11,9 +11,9 @@ function ClothingCard({ piece, onClothingClick }) {
         onClick={() => onClothingClick(piece.id)}
       ></img>
       <h1 id="title">{piece.title}</h1>
-      <p id="clothing-information">
+      <h2 id="clothing-information">
         ${piece.price} BY {piece.brand}
-      </p>
+      </h2>
     </div>
   );
 }

@@ -1,4 +1,11 @@
 /*Clothing Styling*/
+.clothing-container{
+  display: flex;
+  flex-wrap: wrap
+}
+.clothing-card{
+  width: 33%;
+}
 #clothing-hub {
   background: #e6e6e6;
   font-size: 11px;
@@ -16,8 +23,8 @@
   background: linear-gradient(315deg, #F6F6F6, #CFCFCF);
   box-shadow: -35px -35px 70px #B3B3B3,
     35px 35px 70px #FFFFFF;
-  width: 50%;
-  height: 50%;
+  width: 25%;
+  height: 25%;
   display: flex;
 }
 
@@ -30,11 +37,32 @@
 
 #clothing-information {
   font-size: 30px;
+  color: #4f4f4f;
+  text-shadow: 4px -4px 8px #3c3c3c,
+  -4px 4px 8px #626262;
 }
 
 .topnav {
   overflow: hidden;
-  background-color: darkgrey;
+  background-color: #e6e6e6;
+  background: linear-gradient(315deg, #F6F6F6, #d0d0d0);
+  box-shadow: -35px -35px 70px #B3B3B3,
+    35px 35px 70px #FFFFFF;
   position: sticky;
   top: 0;
+  display: flex;
+  justify-content: space-around;
+}
+#nav-title{
+  font-size: 48px;
+  font-family:'Courier New', Courier, monospace;
+  color: #040303;
+  text-shadow: -1px 1px 2px #030000,
+    1px -1px 2px #FF5050;
+
+}
+#home-button{
+  color: #1f1e1e;
+text-shadow: 7px -7px 14px #100f0f,
+-7px 7px 14px #2e2d2d;
 }

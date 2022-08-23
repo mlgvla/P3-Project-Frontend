@@ -11,7 +11,7 @@ function Clothing({ clothing, onClothingClick }) {
       />
     );
   });
-  return <div>{clothingArr}</div>;
+  return <div className="clothing-container">{clothingArr}</div>;
 }
 
 export default Clothing;

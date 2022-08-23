@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Clothing from "./components/Clothing";
 import { useState, useEffect } from "react";
@@ -14,9 +13,15 @@ function App() {
       });
   }, []);
 
+  function HandleClothingClick(id) {
+    fetch(`http://localhost:9292/clothes/${id}`)
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }
+
   return (
     <div>
-      <Clothing clothing={clothing} />
+      <Clothing clothing={clothing} onClothingClick={HandleClothingClick} />
     </div>
   );
 }

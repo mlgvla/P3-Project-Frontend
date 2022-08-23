@@ -1,28 +1,23 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Home from "./components/Home";
+import Clothing from "./components/Clothing";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [clothing, setClothing] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:9292/clothes")
+      .then((res) => res.json())
+      .then((data) => {
+        setClothing(data);
+      });
+  }, []);
+
   return (
-    <>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-      <Home />
-    </>
+    <div>
+      <Clothing clothing={clothing} />
+    </div>
   );
 }
 

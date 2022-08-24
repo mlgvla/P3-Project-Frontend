@@ -8,6 +8,7 @@ function ClothingDetails({ featuredClothing }) {
       <h2 id="clothing-information">
         ${featuredClothing.price} BY {featuredClothing.brand}
       </h2>
+      <h1>in clothing details</h1>
       {/* <h2>
         {featuredClothing.reviews.map((review) => {
           return <p>{review.comment}</p>;

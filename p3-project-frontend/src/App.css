@@ -5,7 +5,9 @@
 }
 .clothing-card{
   width: 33%;
+  display: flex;
 }
+
 #clothing-hub {
   background: #e6e6e6;
   font-size: 11px;

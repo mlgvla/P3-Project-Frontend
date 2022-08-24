@@ -8,9 +8,9 @@ import ShoppingCart from "./components/ShoppingCart";
 
 function App() {
   const [clothing, setClothing] = useState([]);
-  const [showClothingDetails, setShowClothingDetails] = useState(false);
+  // const [showClothingDetails, setShowClothingDetails] = useState(false);
   const [featuredClothing, setFeaturedClothing] = useState([]);
-  const [showShoppingCart, setShowShoppingCart] = useState(false);
+  // const [showShoppingCart, setShowShoppingCart] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:9292/clothes")
@@ -27,42 +27,40 @@ function App() {
         setFeaturedClothing(data);
         console.log(data);
       });
-    setShowClothingDetails(true);
+    // setShowClothingDetails(true);
   }
 
-  function handleCartClick() {
-    setShowShoppingCart(!showShoppingCart);
-    setFeaturedClothing(!featuredClothing);
-  }
+  // function handleCartClick() {
+  //   setShowShoppingCart(!showShoppingCart);
+  //   setFeaturedClothing(!featuredClothing);
+  // }
 
-  function handleGoBack() {
-    setShowClothingDetails((showClothingDetails) => !showClothingDetails);
-  }
+  // function handleGoBack() {
+  //   setShowClothingDetails((showClothingDetails) => !showClothingDetails);
+  // }
 
-  function handleHomeClick() {
-    setShowClothingDetails(false);
-  }
+  // function handleHomeClick() {
+  //   setShowClothingDetails(false);
+  // }
 
   return (
     <div id="container">
-      <NavBar onHomeClick={handleHomeClick} onCartClick={handleCartClick} />
+      <NavBar />
       <Switch>
         <Route exact path="/details">
-          {showClothingDetails ? (
-            <ClothingDetails
-              featuredClothing={featuredClothing}
-              showClothingDetails={showClothingDetails}
-              onGoBack={handleGoBack}
-            />
-          ) : (
-            <Clothing
-              clothing={clothing}
-              onClothingCardClick={handleClothingCardClick}
-            />
-          )}
+          <ClothingDetails
+            featuredClothing={featuredClothing}
+            // showClothingDetails={showClothingDetails}
+          />
+        </Route>
+        <Route exact path="/">
+          <Clothing
+            clothing={clothing}
+            onClothingCardClick={handleClothingCardClick}
+          />
         </Route>
         <Route exact path="/cart">
-          {showShoppingCart ? <ShoppingCart /> : null}
+          <ShoppingCart />
         </Route>
       </Switch>
     </div>

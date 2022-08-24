@@ -8,9 +8,7 @@ import ShoppingCart from "./components/ShoppingCart";
 
 function App() {
   const [clothing, setClothing] = useState([]);
-  // const [showClothingDetails, setShowClothingDetails] = useState(false);
   const [featuredClothing, setFeaturedClothing] = useState([]);
-  // const [showShoppingCart, setShowShoppingCart] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:9292/clothes")
@@ -27,31 +25,14 @@ function App() {
         setFeaturedClothing(data);
         console.log(data);
       });
-    // setShowClothingDetails(true);
   }
-
-  // function handleCartClick() {
-  //   setShowShoppingCart(!showShoppingCart);
-  //   setFeaturedClothing(!featuredClothing);
-  // }
-
-  // function handleGoBack() {
-  //   setShowClothingDetails((showClothingDetails) => !showClothingDetails);
-  // }
-
-  // function handleHomeClick() {
-  //   setShowClothingDetails(false);
-  // }
 
   return (
     <div id="container">
       <NavBar />
       <Switch>
         <Route exact path="/details">
-          <ClothingDetails
-            featuredClothing={featuredClothing}
-            // showClothingDetails={showClothingDetails}
-          />
+          <ClothingDetails featuredClothing={featuredClothing} />
         </Route>
         <Route exact path="/">
           <Clothing

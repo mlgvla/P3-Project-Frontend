@@ -1,7 +1,7 @@
 import React from "react";
 
 export default ClothingCard;
-function ClothingCard({ piece, onClothingClick, onClothingCardClick }) {
+function ClothingCard({ piece, onClothingCardClick }) {
   function displayClothing() {
     onClothingCardClick(piece);
   }
@@ -11,7 +11,6 @@ function ClothingCard({ piece, onClothingClick, onClothingCardClick }) {
         id="hub-photo"
         src={piece.url}
         alt=""
-        // onClick={() => onClothingClick(piece.id)}
         onClick={displayClothing}
       ></img>
       <h1 id="title" onClick={displayClothing}>
@@ -20,6 +19,7 @@ function ClothingCard({ piece, onClothingClick, onClothingCardClick }) {
       <h2 id="clothing-information">
         ${piece.price} BY {piece.brand}
       </h2>
+      <h3>{piece.users}</h3>
     </div>
   );
 }

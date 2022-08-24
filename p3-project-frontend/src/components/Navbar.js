@@ -1,18 +1,26 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function NavBar({ onHomeClick }) {
+function NavBar({ onHomeClick, onCartClick }) {
+  function handleCartClick() {
+    onCartClick();
+  }
+
   function handleClick() {
     onHomeClick();
   }
   return (
     <div className="topnav">
-      <h1 id="home-button" onClick={handleClick}>
+      <Link id="home-button" onClick={handleClick} to="/">
         &#8962;
-      </h1>
-      <h1 id="nav-title" onClick={handleClick}>
+      </Link>
+      <Link id="nav-title" onClick={handleClick} to="/">
         grahnoah
-      </h1>
-      <h1 id="checkout-button"> &#x1f6d2;</h1>
+      </Link>
+      <Link id="checkout-button" onClick={handleCartClick} to="/cart">
+        {" "}
+        &#x1f6d2;
+      </Link>
     </div>
   );
 }

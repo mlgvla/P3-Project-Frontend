@@ -1,6 +1,6 @@
 import React from "react";
 
-function ClothingDetails({ showClothingDetails, featuredClothing }) {
+function ClothingDetails({ featuredClothing }) {
   return (
     <>
       <img id="detail-photo" src={featuredClothing.url} alt=""></img>
@@ -8,6 +8,11 @@ function ClothingDetails({ showClothingDetails, featuredClothing }) {
       <h2 id="clothing-information">
         ${featuredClothing.price} BY {featuredClothing.brand}
       </h2>
+      {/* <h2>
+        {featuredClothing.reviews.map((review) => {
+          return <p>{review.comment}</p>;
+        })}
+      </h2> */}
     </>
   );
 }

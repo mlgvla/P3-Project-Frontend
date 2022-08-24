@@ -1,13 +1,13 @@
 import React from "react";
 import ClothingCard from "./ClothingCard";
 
-function Clothing({ clothing, onClothingClick, onClothingCardClick }) {
+function Clothing({ clothing, onClothingCardClick, HandleClothingFetch }) {
   const clothingArr = clothing.map((piece) => {
     return (
       <ClothingCard
         key={piece.id}
         piece={piece}
-        onClothingClick={onClothingClick}
+        HandleClothingFetch={HandleClothingFetch}
         onClothingCardClick={onClothingCardClick}
       />
     );

@@ -30,14 +30,14 @@
 }
 
 #title {
-  font-size: 38px;
+  font-size: 25px;
   color: #FB2828;
   text-shadow: -1px 1px 2px #030000,
     1px -1px 2px #FF5050;
 }
 
 #clothing-information {
-  font-size: 30px;
+  font-size: 20px;
   color: #4f4f4f;
   text-shadow: 4px -4px 8px #3c3c3c,
   -4px 4px 8px #626262;

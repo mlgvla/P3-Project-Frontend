@@ -2,10 +2,12 @@ import "./App.css";
 import Clothing from "./components/Clothing";
 import { useState, useEffect } from "react";
 import NavBar from "./components/Navbar";
+import ClothingDetails from "./components/ClothingDetails";
 
 function App() {
   const [clothing, setClothing] = useState([]);
-  // featuredClothing/set
+  const [showClothingDetails, setShowClothingDetails] = useState(false);
+  const [featuredClothing, setFeaturedClothing] = useState({});
 
   useEffect(() => {
     fetch("http://localhost:9292/clothes")
@@ -21,10 +23,35 @@ function App() {
       .then((data) => console.log(data));
   }
 
+  function handleHomeClick() {
+    setShowClothingDetails(false);
+  }
+
+  function handleClothingCardClick(featuredClothing) {
+    setFeaturedClothing(featuredClothing);
+    setShowClothingDetails(true);
+  }
+
+  function handleGoBack() {
+    setShowClothingDetails((showClothingDetails) => !showClothingDetails);
+  }
+
   return (
     <div>
-      <NavBar />
-      <Clothing clothing={clothing} onClothingClick={HandleClothingClick} />
+      <NavBar onHomeClick={handleHomeClick} />
+      {showClothingDetails ? (
+        <ClothingDetails
+          featuredClothing={featuredClothing}
+          showClothingDetails={showClothingDetails}
+          onGoBack={handleGoBack}
+        />
+      ) : (
+        <Clothing
+          clothing={clothing}
+          onClothingClick={HandleClothingClick}
+          onClothingCardClick={handleClothingCardClick}
+        />
+      )}
     </div>
   );
 }

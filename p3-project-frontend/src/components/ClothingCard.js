@@ -13,7 +13,7 @@ function ClothingCard({ piece, onClothingCardClick }) {
         alt=""
         onClick={displayClothing}
       ></img>
-      <Link to="/details">
+      <Link to="/details/${id}">
         <h1 id="title" onClick={displayClothing}>
           {piece.title}
         </h1>

@@ -19,7 +19,7 @@ function App() {
   }, []);
 
   function handleClothingCardClick(featuredClothing) {
-    fetch(`http://localhost:9292/clothes/${featuredClothing.id}`)
+    fetch(`http://localhost:9292/details/${featuredClothing.id}`)
       .then((res) => res.json())
       .then((data) => {
         setFeaturedClothing(data);

@@ -2,10 +2,11 @@ import React from "react";
 import { useState } from "react";
 import EditReviewForm from "./EditReviewForm";
 
-function Review({ review }) {
+function Review({ review, userName }) {
+  console.log(userName.name);
   const [showEditForm, setShowEditForm] = useState(false);
   const comment = review.comment;
-  const user = review.user.name;
+  const user = userName.name;
 
   function handleDelete() {
     fetch("http://localhost:9292/reviews/" + review.id, {

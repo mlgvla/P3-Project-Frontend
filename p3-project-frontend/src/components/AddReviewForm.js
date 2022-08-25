@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function AddReviewForm({ id }) {
+function AddReviewForm({ id, userReviews, setUserReviews }) {
   console.log(id);
 
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ function AddReviewForm({ id }) {
       body: JSON.stringify(formData),
     })
       .then((res) => res.json())
-      .then((addedReview) => console.log(addedReview));
+      .then((addedReview) => setUserReviews([...userReviews, addedReview]));
   }
 
   return (

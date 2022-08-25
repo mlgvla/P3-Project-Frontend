@@ -8,22 +8,34 @@ let allReviews = [];
 
 function ClothingDetails() {
   const [clothingDetails, setClothingDetails] = useState({});
+  const [userReviews, setUserReviews] = useState([]);
   const { id } = useParams();
 
-  function makeReviews(data) {
-    allReviews = data.reviews.map((review) => (
-      <Review review={review} key={review.id} />
-    ));
-  }
+  // function makeReviews(data) {
+  //   allReviews = data.reviews.map((review) => (
+  //     <Review review={review} key={review.id} />
+  //   ));
+  // }
+
+  const allReviews = userReviews.map((userReview) => (
+    <Review
+      review={userReview}
+      userName={userReview.user.name}
+      key={userReview.id}
+    />
+  ));
 
   useEffect(() => {
     fetch(`http://localhost:9292/clothes/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setClothingDetails(data);
-        makeReviews(data);
+        setUserReviews(data.reviews);
+        // makeReviews(data);
       });
   }, []);
+
+  console.log(userReviews);
 
   return (
     <div id="page-container">
@@ -33,7 +45,11 @@ function ClothingDetails() {
         <h2 id="clothing-information">
           ${clothingDetails.price} BY {clothingDetails.brand}
         </h2>
-        <AddReviewForm id={id} />
+        <AddReviewForm
+          id={id}
+          userReviews={userReviews}
+          setUserReviews={setUserReviews}
+        />
       </div>
       <div id="right-side">{allReviews}</div>
     </div>

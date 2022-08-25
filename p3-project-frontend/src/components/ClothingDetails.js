@@ -1,18 +1,34 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-function ClothingDetails({ featuredClothing }) {
-  const allReviews = featuredClothing.reviews.map((review) => {
-    return review.user.name + "\n" + review.comment;
-  });
+function ClothingDetails() {
+  const [clothingDetails, setClothingDetails] = useState({});
+  const { id } = useParams();
+  console.log(id);
+  console.log(clothingDetails);
+  debugger;
+  // const allReviews = featuredClothing.reviews.map((review) => {
+  //   return review.user.name + "\n" + review.comment;
+  // });
+
+  useEffect(() => {
+    fetch(`http://localhost:9292/clothes/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setClothingDetails(data);
+        console.log(data);
+      });
+  }, [id]);
 
   return (
     <>
-      <img id="detail-photo" src={featuredClothing.url} alt=""></img>
-      <h1 id="title">{featuredClothing.title}</h1>
+      <img id="detail-photo" src={clothingDetails.url} alt=""></img>
+      <h1 id="title">{clothingDetails.title}</h1>
       <h2 id="clothing-information">
-        ${featuredClothing.price} BY {featuredClothing.brand}
+        ${clothingDetails.price} BY {clothingDetails.brand}
       </h2>
-      <h2>{allReviews}</h2>
+      {/* <h2>{allReviews}</h2> */}
     </>
   );
 }

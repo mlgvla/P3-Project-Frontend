@@ -8,7 +8,6 @@ import ShoppingCart from "./components/ShoppingCart";
 
 function App() {
   const [clothing, setClothing] = useState([]);
-  const [featuredClothing, setFeaturedClothing] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:9292/clothes")
@@ -18,27 +17,15 @@ function App() {
       });
   }, []);
 
-  function handleClothingCardClick(featuredClothing) {
-    fetch(`http://localhost:9292/details/${featuredClothing.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setFeaturedClothing(data);
-        console.log(data);
-      });
-  }
-
   return (
     <div id="container">
       <NavBar />
       <Switch>
-        <Route exact path="/details">
-          <ClothingDetails featuredClothing={featuredClothing} />
+        <Route exact path="/clothes/:id">
+          <ClothingDetails />
         </Route>
         <Route exact path="/">
-          <Clothing
-            clothing={clothing}
-            onClothingCardClick={handleClothingCardClick}
-          />
+          <Clothing clothing={clothing} />
         </Route>
         <Route exact path="/cart">
           <ShoppingCart />

@@ -17,12 +17,10 @@ function ClothingDetails() {
   //   ));
   // }
 
+  const userName = userReviews.user.name;
+
   const allReviews = userReviews.map((userReview) => (
-    <Review
-      review={userReview}
-      userName={userReview.user.name}
-      key={userReview.id}
-    />
+    <Review review={userReview} userName={userName} key={userReview.id} />
   ));
 
   useEffect(() => {

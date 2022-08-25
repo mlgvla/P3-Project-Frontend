@@ -1,25 +1,31 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Review from "./Review";
+
+let allReviews = [];
 
 function ClothingDetails() {
   const [clothingDetails, setClothingDetails] = useState({});
   const { id } = useParams();
-  console.log(id);
-  console.log(clothingDetails);
-  debugger;
-  // const allReviews = featuredClothing.reviews.map((review) => {
-  //   return review.user.name + "\n" + review.comment;
-  // });
+
+  function makeReviews(data) {
+    console.log("in make review", data);
+    allReviews = data.reviews.map((review) => (
+      <Review review={review} key={review.id} />
+    ));
+  }
+
+  console.log(allReviews);
 
   useEffect(() => {
     fetch(`http://localhost:9292/clothes/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setClothingDetails(data);
-        console.log(data);
+        makeReviews(data);
       });
-  }, [id]);
+  }, []);
 
   return (
     <>
@@ -28,7 +34,7 @@ function ClothingDetails() {
       <h2 id="clothing-information">
         ${clothingDetails.price} BY {clothingDetails.brand}
       </h2>
-      {/* <h2>{allReviews}</h2> */}
+      <h2>{allReviews}</h2>
     </>
   );
 }

@@ -1,18 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ClothingCard({ piece, onClothingCardClick }) {
-  // function displayClothing() {
-  //   onClothingCardClick(piece);
-  // }
+function ClothingCard({ piece }) {
   return (
     <div id="clothing-hub">
-      <img
-        id="hub-photo"
-        src={piece.url}
-        alt=""
-        // onClick={displayClothing}
-      ></img>
+      <img id="hub-photo" src={piece.url} alt=""></img>
       <Link to={`/clothes/${piece.id}`}>
         <h1 id="title">{piece.title}</h1>
       </Link>

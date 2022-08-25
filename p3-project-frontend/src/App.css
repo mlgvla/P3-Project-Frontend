@@ -73,11 +73,55 @@ cursor: pointer;
 }
 
 #detail-photo {
-  width: 35%;
-  height: 35%;
+  width: 95%;
+  height: 95%;
 }
 
 #title {
   cursor: pointer;
 }
 
+#review-user{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /* position: absolute; */
+  left: 35%;
+  top:20%
+}
+#review-comment{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /* position: absolute; */
+  left: 35%;
+  top:23%
+}
+/* #delete-button{
+  position: absolute;
+  right: 1%;
+  top:17%;
+  padding:20px;
+}
+#edit-button{
+  position: absolute;
+  right: 5%;
+  top:17%;
+  padding:20px;
+} */
+
+#page-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+#left-side {
+  width: 50%;
+  height: 80%;
+}
+
+#right-side {
+  width: 50%;
+  height: 80%;
+  text-align: left;
+}
+
+#review-container {
+  margin: 16px;
+}

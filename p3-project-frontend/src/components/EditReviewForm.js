@@ -1,19 +1,24 @@
-import React from "react";
-import { useState } from "react";
+import React from "react"
+import { useState } from "react"
 
-function EditReviewForm({ review, userReviews, setUserReviews, setShowEditForm }) {
+function EditReviewForm({
+  review,
+  userReviews,
+  setUserReviews,
+  setShowEditForm,
+}) {
   const [formData, setFormData] = useState({
     user_id: 1,
     clothing_id: parseInt(review.id),
     comment: review.comment,
-  });
+  })
 
   function handleInputChange(e) {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     fetch("http://localhost:9292/reviews/" + review.id, {
       method: "PATCH",
       headers: {
@@ -26,9 +31,9 @@ function EditReviewForm({ review, userReviews, setUserReviews, setShowEditForm }
         const modifiedReview = {
           id: editedReview.id,
           comment: editedReview.comment,
-          username: editedReview.user.name
+          username: editedReview.user.name,
         }
-        const modifiedReviews = userReviews.map(userReview => {
+        const modifiedReviews = userReviews.map((userReview) => {
           if (userReview.id === modifiedReview.id) {
             return modifiedReview
           } else {
@@ -54,7 +59,7 @@ function EditReviewForm({ review, userReviews, setUserReviews, setShowEditForm }
         <button type="submit">Submit</button>
       </form>
     </div>
-  );
+  )
 }
 
-export default EditReviewForm;
+export default EditReviewForm

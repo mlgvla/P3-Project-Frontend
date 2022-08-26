@@ -4,20 +4,10 @@ import { useParams } from "react-router-dom"
 import AddReviewForm from "./AddReviewForm"
 import Review from "./Review"
 
-let allReviews = []
-
 function ClothingDetails() {
   const [clothingDetails, setClothingDetails] = useState({})
   const [userReviews, setUserReviews] = useState([])
   const { id } = useParams()
-
-  // function makeReviews(data) {
-  //   allReviews = data.reviews.map((review) => (
-  //     <Review review={review} key={review.id} />
-  //   ));
-  // }
-
-  // const userName = userReviews.user.name;
 
   const allReviews = userReviews.map((userReview) => (
     <Review
@@ -41,11 +31,8 @@ function ClothingDetails() {
           }
         })
         setUserReviews(mappedReviews)
-        // makeReviews(data);
       })
   }, [])
-
-  console.log(userReviews)
 
   return (
     <div id="page-container">

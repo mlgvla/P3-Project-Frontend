@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
 function ClothingCard({ piece }) {
   return (
@@ -13,7 +13,7 @@ function ClothingCard({ piece }) {
       </h2>
       <h3>{piece.users}</h3>
     </div>
-  );
+  )
 }
 
-export default ClothingCard;
+export default ClothingCard

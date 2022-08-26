@@ -1,27 +1,30 @@
-import React from "react";
-import { useState } from "react";
-import EditReviewForm from "./EditReviewForm";
+import React from "react"
+import { useState } from "react"
+import EditReviewForm from "./EditReviewForm"
 
-function Review({ review, userName }) {
-  console.log(userName.name);
-  const [showEditForm, setShowEditForm] = useState(false);
-  const comment = review.comment;
-  const user = userName.name;
+function Review({ userReview, userReviews, setUserReviews }) {
+  const { id, comment, username } = userReview
+  const [showEditForm, setShowEditForm] = useState(false)
 
   function handleDelete() {
-    fetch("http://localhost:9292/reviews/" + review.id, {
+    fetch("http://localhost:9292/reviews/" + id, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        const modifiedReviews = userReviews.filter(
+          (userReview) => userReview.id !== data.id
+        )
+        setUserReviews(modifiedReviews)
+      })
   }
 
   return (
     <div id="review-container">
-      <div id="review-user">{user}</div>
+      <div id="review-user">{username}</div>
       <div id="review-comment">
         {comment}
         <br></br>
@@ -31,10 +34,17 @@ function Review({ review, userName }) {
         <button id="delete-button" onClick={handleDelete}>
           X
         </button>
-        {showEditForm ? <EditReviewForm review={review} /> : null}
+        {showEditForm ? (
+          <EditReviewForm
+            review={userReview}
+            userReviews={userReviews}
+            setUserReviews={setUserReviews}
+            setShowEditForm={setShowEditForm}
+          />
+        ) : null}
       </div>
     </div>
-  );
+  )
 }
 
-export default Review;
+export default Review

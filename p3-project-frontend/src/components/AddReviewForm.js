@@ -24,19 +24,32 @@ function AddReviewForm({ id, userReviews, setUserReviews }) {
       body: JSON.stringify(formData),
     })
       .then((res) => res.json())
-      .then((addedReview) => setUserReviews([...userReviews, addedReview]));
+      .then((addedReview) => {
+        const modifiedReview = {
+          id: addedReview.id,
+          comment: addedReview.comment,
+          username: addedReview.user.name
+        }
+        setUserReviews([...userReviews, modifiedReview]);
+        setFormData({
+          user_id: 1,
+          clothing_id: parseInt(id),
+          comment: "",
+        })
+  })
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <textarea
+        <input
+          size="50"
           name="comment"
           value={formData.comment}
           type="text"
           placeholder="Add Review"
           onChange={handleInputChange}
-        ></textarea>
+        ></input>
         <button type="submit">Add Review</button>
       </form>
     </div>

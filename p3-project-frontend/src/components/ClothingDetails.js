@@ -1,15 +1,15 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import AddReviewForm from "./AddReviewForm";
-import Review from "./Review";
+import React from "react"
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import AddReviewForm from "./AddReviewForm"
+import Review from "./Review"
 
-let allReviews = [];
+let allReviews = []
 
 function ClothingDetails() {
-  const [clothingDetails, setClothingDetails] = useState({});
-  const [userReviews, setUserReviews] = useState([]);
-  const { id } = useParams();
+  const [clothingDetails, setClothingDetails] = useState({})
+  const [userReviews, setUserReviews] = useState([])
+  const { id } = useParams()
 
   // function makeReviews(data) {
   //   allReviews = data.reviews.map((review) => (
@@ -17,23 +17,35 @@ function ClothingDetails() {
   //   ));
   // }
 
-  const userName = userReviews.user.name;
+  // const userName = userReviews.user.name;
 
   const allReviews = userReviews.map((userReview) => (
-    <Review review={userReview} userName={userName} key={userReview.id} />
-  ));
+    <Review
+      userReview={userReview}
+      userReviews={userReviews}
+      setUserReviews={setUserReviews}
+      key={userReview.id}
+    />
+  ))
 
   useEffect(() => {
     fetch(`http://localhost:9292/clothes/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setClothingDetails(data);
-        setUserReviews(data.reviews);
+        setClothingDetails(data)
+        const mappedReviews = data.reviews.map((review) => {
+          return {
+            id: review.id,
+            comment: review.comment,
+            username: review.user.name,
+          }
+        })
+        setUserReviews(mappedReviews)
         // makeReviews(data);
-      });
-  }, []);
+      })
+  }, [])
 
-  console.log(userReviews);
+  console.log(userReviews)
 
   return (
     <div id="page-container">
@@ -51,7 +63,7 @@ function ClothingDetails() {
       </div>
       <div id="right-side">{allReviews}</div>
     </div>
-  );
+  )
 }
 
-export default ClothingDetails;
+export default ClothingDetails
